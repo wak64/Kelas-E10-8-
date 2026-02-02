@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelas E10-8 | SMA Hangtua 5 Sidoarjo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            /* Animasi masuk kontainer utama */
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #2980b9;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            /* Animasi teks bergelombang */
+            animation: waveText 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes waveText {
+            from {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            to {
+                text-shadow: 0 4px 8px rgba(41, 128, 185, 0.3);
+                transform: scale(1.02);
+            }
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            font-weight: 500;
+            /* Animasi muncul dengan jeda */
+            animation: fadeIn 1.5s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Garis dekoratif dengan animasi */
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #2980b9, transparent);
+            animation: slideLine 3s ease-in-out infinite;
+        }
+
+        @keyframes slideLine {
+            0%, 100% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: 100% 0;
+            }
+        }
+
+        .leaderboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            /* Animasi masuk kartu dengan jeda berbeda */
+            opacity: 0;
+            transform: scale(0.9);
+            animation: popIn 0.8s ease-out forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.8s; }
+        .card:nth-child(2) { animation-delay: 1.1s; }
+        .card:nth-child(3) { animation-delay: 1.4s; }
+        .card:nth-child(4) { animation-delay: 1.7s; }
+
+        @keyframes popIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Elemen dekoratif di kartu yang bergerak */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(41, 128, 185, 0.1);
+            transform: rotate(30deg);
+            animation: slideDecor 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes slideDecor {
+            to {
+                top: 50%;
+                right: 50%;
+            }
+        }
+
+        .position {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            /* Animasi warna teks */
+            animation: colorShift 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes colorShift {
+            from { color: #2c3e50; }
+            to { color: #2980b9; }
+        }
+
+        .name {
+            font-size: 1.4rem;
+            color: #2980b9;
+            font-weight: 600;
+            position: relative;
+            z-index: 1; /* Agar nama tidak tertutup dekoratif */
+            /* Animasi naik turun sedikit */
+            animation: floatName 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatName {
+            from { transform: translateY(0); }
+            to { transform: translateY(-5px); }
+        }
+
+        /* Efek hover yang lebih dinamis */
+        .card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 12px 35px rgba(41, 128, 185, 0.2);
+            transition: all 0.4s ease;
+            background: linear-gradient(145deg, #e9ecef, #f8f9fa);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            /* Animasi muncul dengan jeda */
+            animation: fadeIn 2s ease-out forwards;
+            opacity: 0;
+            animation-delay: 2s;
+        }
+
+        /* Animasi geser kursor saat di area footer */
+        .footer:hover {
+            color: #2980b9;
+            transition: color 0.3s ease;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>SMA HANGTUA 5 SIDOARJO</h1>
+            <p>Kelas E10-8</p>
+        </div>
+
+        <div class="leaderboard">
+            <div class="card">
+                <div class="position">Ketua Kelas</div>
+                <div class="name">Gibran Arviano</div>
+            </div>
+
+            <div class="card">
+                <div class="position">Wakil Ketua</div>
+                <div class="name">Ahmad Rafi</div>
+            </div>
+
+            <div class="card">
+                <div class="position">Sekretaris</div>
+                <div class="name">M. Alvaro Risky Putra</div>
+            </div>
+
+            <div class="card">
+                <div class="position">Bendahara</div>
+                <div class="name">Amabel Ayu Elysia</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 Kelas E10-8 SMA Hangtua 5 Sidoarjo | developer: EL Muhammad 
+        </div>
+    </div>
+</body>
+</html>
